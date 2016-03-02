@@ -1,0 +1,1047 @@
+extends layouts/default.jade
+block content
+  //- FORM
+  .row
+    .small-11.small-centered
+      hr
+      h2 Abide
+
+      form(data-abide='', novalidate='')
+        .alert.callout(data-abide-error='', style='display: none;')
+          p
+            i.fi-alert
+            |  There are some errors in your form.
+        .row
+          .small-12.columns
+            label
+              | Number Required
+              input(type='text', placeholder='1234', aria-describedby='exampleHelpText', required='', pattern='number')
+              span.form-error
+                | Yo, you had better fill this out, it&apos;s required.
+            p#exampleHelpText.help-text Here&apos;s how you use this input field!
+          .small-12.columns
+            label
+              | Nothing Required!
+              input(type='text', placeholder="Use me, or don't", aria-describedby='exampleHelpTex', data-abide-ignore='')
+            p#exampleHelpTex.help-text This input is ignored by Abide using &grave;data-abide-ignore&grave;
+          .small-12.columns
+            label
+              | Password Required
+              input#password(type='password', placeholder='yeti4preZ', aria-describedby='exampleHelpText', required='')
+              span.form-error
+                | I&apos;m required!
+            p#exampleHelpText.help-text Enter a password please.
+          .small-12.columns
+            label
+              | Re-enter Password
+              input(type='password', placeholder='yeti4preZ', aria-describedby='exampleHelpText2', required='', pattern='alpha_numeric', data-equalto='password')
+              span.form-error
+                | Hey, passwords are supposed to match!
+            p#exampleHelpText2.help-text
+              | This field is using the &grave;data-equalto=&quot;password&quot;&grave; attribute, causing it to match the password field above.
+        .row
+          .medium-6.columns
+            label
+              | URL Pattern, not required, but throws error if it doesn&apos;t match the Regular Expression for a valid URL.
+              input(type='text', placeholder='http://foundation.zurb.com', pattern='url')
+          .medium-6.columns
+            label
+              | European Cars, Choose One, it can&apos;t be the blank option.
+              select#select(required='')
+                option(value='')
+                option(value='volvo') Volvo
+                option(value='saab') Saab
+                option(value='mercedes') Mercedes
+                option(value='audi') Audi
+        .row
+          fieldset.large-6.columns
+            legend Choose Your Favorite, and this is required, so you have to pick one.
+            input#pokemonRed(type='radio', name='pokemon', value='Red')
+            label(for='pokemonRed') Red
+            input#pokemonBlue(type='radio', name='pokemon', value='Blue', required='')
+            label(for='pokemonBlue') Blue
+            input#pokemonYellow(type='radio', name='pokemon', value='Yellow')
+            label(for='pokemonYellow') Yellow
+          fieldset.large-6.columns
+            legend Choose Your Favorite - not required, you can leave this one blank.
+            input#pocketsRed(type='radio', name='pockets', value='Red')
+            label(for='pocketsRed') Red
+            input#pocketsBlue(type='radio', name='pockets', value='Blue')
+            label(for='pocketsBlue') Blue
+            input#pocketsYellow(type='radio', name='pockets', value='Yellow')
+            label(for='pocketsYellow') Yellow
+          fieldset.large-6.columns
+            legend Check these out
+            input#checkbox1(type='checkbox')
+            label(for='checkbox1') Checkbox 1
+            input#checkbox2(type='checkbox', required='')
+            label(for='checkbox2') Checkbox 2
+            input#checkbox3(type='checkbox')
+            label(for='checkbox3') Checkbox 3
+        .row
+          fieldset.large-6.columns
+            button.button(type='submit', value='Submit') Submit
+          fieldset.large-6.columns
+            button.button(type='reset', value='Reset') Reset
+
+      
+
+      hr
+
+      h2 Accordion
+
+      
+      ul.accordion(data-accordion='', role='tablist')
+        li.accordion-item.is-active
+          // The tab title needs role="tab", an href, a unique ID, and aria-controls.
+          a#panel1d-heading.accordion-title(href='#panel1d', role='tab', aria-controls='panel1d') Accordion 1
+          // The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby.
+          #panel1d.accordion-content(role='tabpanel', data-tab-content='', aria-labelledby='panel1d-heading')
+            | Panel 1. Lorem ipsum dolor
+        li.accordion-item
+          // The tab title needs role="tab", an href, a unique ID, and aria-controls.
+          a#panel1d-heading.accordion-title(href='#panel1d', role='tab', aria-controls='panel1d') Accordion 1
+          // The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby.
+          #panel1d.accordion-content(role='tabpanel', data-tab-content='', aria-labelledby='panel1d-heading')
+            | Panel 2. Lorem ipsum dolor
+        li.accordion-item
+          // The tab title needs role="tab", an href, a unique ID, and aria-controls.
+          a#panel1d-heading.accordion-title(href='#panel1d', role='tab', aria-controls='panel1d') Accordion 1
+          // The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby.
+          #panel1d.accordion-content(role='tabpanel', data-tab-content='', aria-labelledby='panel1d-heading')
+            | Panel 3. Lorem ipsum dolor
+
+      
+
+      hr
+
+      h2 Accordion Menu
+
+      
+      ul.vertical.menu(data-accordion-menu='')
+        li
+          a(href='#') Item 1
+          ul.menu.vertical.nested.is-active
+            li
+              a(href='#') Item 1A
+              ul.menu.vertical.nested
+                li
+                  a(href='#') Item 1Ai
+                li
+                  a(href='#') Item 1Aii
+                li
+                  a(href='#') Item 1Aiii
+            li
+              a(href='#') Item 1B
+            li
+              a(href='#') Item 1C
+        li
+          a(href='#') Item 2
+          ul.menu.vertical.nested
+            li
+              a(href='#') Item 2A
+            li
+              a(href='#') Item 2B
+        li
+          a(href='#') Item 3
+
+      
+
+      hr
+
+      h2 Badge
+
+      
+      span.secondary.badge 2
+      span.success.badge 3
+      span.alert.badge A
+      span.warning.badge B
+
+      
+
+      hr
+
+      h2 Breadcrumbs
+
+      
+      nav(aria-label='You are here:', role='navigation')
+        ul.breadcrumbs
+          li
+            a(href='#') Home
+          li
+            a(href='#') Features
+          li.disabled Gene Splicing
+          li
+            span.show-for-sr Current: 
+            |  Cloning
+
+      
+
+      hr
+
+      h2 Button
+
+      
+      //- Anchors (links)
+      a.button(href='about.html') Learn More
+      a.button(href='#features') View All Features
+      //- Buttons (actions)
+      button.success.button(type='button') Save
+      button.alert.button(type='button') Delete
+      a.tiny.button(href='#') So Tiny
+      a.small.button(href='#') So Small
+      a.large.button(href='#') So Large
+      a.expanded.button(href='#') Such Expand
+      .button-group
+        a.button One
+        a.button Two
+        a.button Three
+
+      
+
+      hr
+
+      h2 Callout
+
+      
+      .callout
+        h5 This is a callout.
+        p It has an easy to override visual style, and is appropriately subdued.
+        a(href='#') It&apos;s dangerous to go alone, take this.
+      .callout.secondary
+        h5 This is a secondary callout
+        p It has an easy to override visual style, and is appropriately subdued.
+        a(href='#') It&apos;s dangerous to go alone, take this.
+      .callout.success
+        h5 This is a success callout
+        p It has an easy to override visual style, and is appropriately subdued.
+        a(href='#') It&apos;s dangerous to go alone, take this.
+      .callout.warning
+        h5 This is a warning callout
+        p It has an easy to override visual style, and is appropriately subdued.
+        a(href='#') It&apos;s dangerous to go alone, take this.
+      .callout.alert
+        h5 This is an alert callout
+        p It has an easy to override visual style, and is appropriately subdued.
+        a(href='#') It&apos;s dangerous to go alone, take this.
+
+      
+
+      hr
+
+      h2 Close Button
+
+      
+      .callout
+        button.close-button(aria-label='Close alert', type='button')
+          span(aria-hidden='true') &times;
+        p This is a static close button example.
+
+      
+
+      hr
+
+      h2 Drilldown Menu
+
+      
+      ul#m1.vertical.menu(data-drilldown='', style='width: 200px')
+        li
+          a(href='#') Item 1
+          ul#m2.vertical.menu
+            li
+              a(href='#') Item 1A
+              ul#m3.vertical.menu
+                li
+                  a(href='#') Item 1Aa
+                li
+                  a(href='#') Item 1Ba
+                li
+                  a(href='#') Item 1Ca
+                li
+                  a(href='#') Item 1Da
+                li
+                  a(href='#') Item 1Ea
+            li
+              a(href='#') Item 1B
+            li
+              a(href='#') Item 1C
+            li
+              a(href='#') Item 1D
+            li
+              a(href='#') Item 1E
+        li
+          a(href='#') Item 2
+          ul.vertical.menu
+            li
+              a(href='#') Item 2A
+            li
+              a(href='#') Item 2B
+            li
+              a(href='#') Item 2C
+            li
+              a(href='#') Item 2D
+            li
+              a(href='#') Item 2E
+        li
+          a(href='#') Item 3
+          ul.vertical.menu
+            li
+              a(href='#') Item 3A
+            li
+              a(href='#') Item 3B
+            li
+              a(href='#') Item 3C
+            li
+              a(href='#') Item 3D
+            li
+              a(href='#') Item 3E
+        li
+          a(href='#')  Item 4
+
+      
+
+      hr
+
+      h2 Dropdown Menu
+
+      
+      ul.dropdown.menu(data-dropdown-menu='')
+        li
+          a Item 1
+          ul.menu
+            li
+              a(href='#') Item 1A Loooong
+            li
+              a(href='#')  Item 1 sub
+              ul.menu
+                li
+                  a(href='#') Item 1 subA
+                li
+                  a(href='#') Item 1 subB
+                li
+                  a(href='#')  Item 1 sub
+                  ul.menu
+                    li
+                      a(href='#') Item 1 subA
+                    li
+                      a(href='#') Item 1 subB
+                li
+                  a(href='#')  Item 1 sub
+                  ul.menu
+                    li
+                      a(href='#') Item 1 subA
+            li
+              a(href='#') Item 1B
+        li
+          a(href='#') Item 2
+          ul.menu
+            li
+              a(href='#') Item 2A
+            li
+              a(href='#') Item 2B
+        li
+          a(href='#') Item 3
+        li
+          a(href='#') Item 4
+
+      
+
+      hr
+
+      h2 Dropdown Pane
+
+      
+      button.button(type='button', data-toggle='example-dropdown') Toggle Dropdown
+        #example-dropdown.dropdown-pane(data-dropdown='')
+          | Just some junk that needs to be said. Or not. Your choice.
+
+      
+
+      hr
+
+      h2 Equalizer
+
+      
+      #test-eq.row(data-equalizer='', data-equalize-on='medium')
+        .medium-4.columns
+          .callout(data-equalizer-watch='')
+            img(src='http://placehold.it/300x300')
+        .medium-4.columns
+          .callout(data-equalizer-watch='')
+            p Pellentesque habitant morbi tristique senectus et netus et, ante.
+        .medium-4.columns
+          .callout(data-equalizer-watch='')
+            img(src='http://placehold.it/400x300')
+
+      
+
+      hr
+
+      h2 Flex Grid
+
+
+      .row
+        .small-6.columns 6 columns
+        .small-6.columns 6 columns
+      .row
+        .medium-6.large-4.columns 12/6/4 columns
+        .medium-6.large-8.columns 12/6/8 columns
+
+      
+
+      .row.display
+        .small-6.columns 6 columns
+        .small-6.columns 6 columns
+      .row.display
+        .medium-6.large-4.columns 12/6/4 columns
+        .medium-6.large-8.columns 12/6/8 columns
+
+
+      hr
+
+      h2 Flex Video
+
+      
+      .flex-video
+        iframe(width='420', height='315', src='https://www.youtube.com/embed/V9gkYw35Vws', frameborder='0', allowfullscreen='')
+
+      
+
+      hr
+
+      h2 Float Classes
+
+      
+      .callout.clearfix
+        a.button.float-left Left
+        a.button.float-right Right
+
+      
+
+      hr
+
+      h2 Forms
+
+      
+      form
+        label
+          | Input Label
+          input(type='text', placeholder='.small-12.columns', aria-describedby='exampleHelpText')
+        p#exampleHelpText.help-text Here&apos;s how you use this input field!
+        label
+          | How many puppies?
+          input(type='number', value='100')
+        label
+          | What books did you read over summer break?
+          textarea(placeholder='None')
+        label
+          | Select Menu
+          select
+            option(value='husker') Husker
+            option(value='starbuck') Starbuck
+            option(value='hotdog') Hot Dog
+            option(value='apollo') Apollo
+        .row
+          fieldset.large-6.columns
+            legend Choose Your Favorite
+            input#pokemonRed(type='radio', name='pokemon', value='Red', required='')
+            label(for='pokemonRed') Red
+            input#pokemonBlue(type='radio', name='pokemon', value='Blue')
+            label(for='pokemonBlue') Blue
+            input#pokemonYellow(type='radio', name='pokemon', value='Yellow')
+            label(for='pokemonYellow') Yellow
+          fieldset.large-6.columns
+            legend Check these out
+            input#checkbox1(type='checkbox')
+            label(for='checkbox1') Checkbox 1
+            input#checkbox2(type='checkbox')
+            label(for='checkbox2') Checkbox 2
+            input#checkbox3(type='checkbox')
+            label(for='checkbox3') Checkbox 3
+        .row
+          .small-3.columns
+            label.text-right.middle(for='middle-label') Label
+          .small-9.columns
+            input#middle-label(type='text', placeholder='Right- and middle-aligned text input')
+        .input-group
+          span.input-group-label $
+          input.input-group-field(type='url')
+          a.input-group-button.button Submit
+
+      
+
+      hr
+
+      h2 Grid
+
+      
+      .row
+        .small-2.medium-3.large-4.columns 2/3/4 columns
+        .small-4.medium-3.large-4.columns 4/3/4 columns
+        .small-6.large-4.columns 6/6/4 columns
+      .row
+        .large-3.columns 12/12/3 columns
+        .large-6.columns 12/12/6 columns
+        .large-3.columns 12/12/3 columns
+      .row
+        .small-6.large-2.columns 6/6/2 columns
+        .small-6.large-8.columns 6/6/8 columns
+        .small-12.large-2.columns 12/12/2 columns
+      .row
+        .small-3.columns 3 columns
+        .small-9.columns 9 columns
+      .row
+        .medium-8.large-4.columns 12/8/4 columns
+        .medium-4.large-8.columns 12/4/8 columns
+      .row.display
+        .small-2.medium-3.large-4.columns 2/3/4 columns
+        .small-4.medium-3.large-4.columns 4/3/4 columns
+        .small-6.large-4.columns 6/6/4 columns
+      .row.display
+        .large-3.columns 12/12/3 columns
+        .large-6.columns 12/12/6 columns
+        .large-3.columns 12/12/3 columns
+      .row.display
+        .small-6.large-2.columns 6/6/2 columns
+        .small-6.large-8.columns 6/6/8 columns
+        .small-12.large-2.columns 12/12/2 columns
+      .row.display
+        .small-3.columns 3 columns
+        .small-9.columns 9 columns
+      .row.display
+        .medium-8.large-4.columns 12/8/4 columns
+        .medium-4.large-8.columns 12/4/8 columns
+
+
+      hr
+
+      h2 Interchange
+
+      
+      img(data-interchange='[http://placehold.it/300x100, small], [http://placehold.it/600x200, medium], [http://placehold.it/1200x300, large]')
+
+      
+
+      hr
+
+      h2 Label
+
+      
+      span.secondary.label Secondary Label
+      span.success.label Success Label
+      span.alert.label Alert Label
+      span.warning.label Warning Label
+
+      
+
+      hr
+
+      h2 Magellan
+
+      
+      ul.horizontal.menu(data-magellan='')
+        li
+          a(href='#first') First Arrival
+        li
+          a(href='#second') Second Arrival
+        li
+          a(href='#third') Third Arrival
+      .sections
+        section#first(data-magellan-target='first')
+          h4 First section
+          p
+            | Duis scelerisque ligula ut metus rhoncus scelerisque. Integer ut egestas metus. Nulla facilisi. Aenean luctus magna lobortis ligula rhoncus, sit amet lacinia lorem sagittis. Sed ultrices at metus id aliquet. Vestibulum in condimentum quam, id ornare erat. Vivamus nec justo quis ex fringilla condimentum ac non quam.
+        section#second(data-magellan-target='second')
+          h4 Second section
+          p
+            | Sed vulputate, felis interdum molestie viverra, neque urna placerat dui, ac efficitur est magna eu tellus. Nunc sodales consequat eros at bibendum. Vestibulum hendrerit gravida elit non eleifend. Nunc at vehicula ipsum. Vestibulum eu suscipit felis. Proin ipsum felis, consequat congue quam ac, efficitur tincidunt ex. Morbi accumsan sem iaculis nunc malesuada tincidunt.
+        section#third(data-magellan-target='third')
+          h4 Second section
+          p
+            | Aliquam orci orci, maximus a pulvinar id, tincidunt a neque. Suspendisse eros diam, finibus et faucibus ac, suscipit feugiat orci. Morbi scelerisque sem id blandit malesuada. Donec suscipit tincidunt dolor in blandit. Nam rhoncus risus vitae lacinia dictum. Cras lobortis, nulla non faucibus mattis, tellus nibh condimentum eros, posuere volutpat arcu risus vel ante. In ut ullamcorper eros, et vestibulum risus. Fusce auctor risus vitae diam viverra tincidunt.
+      ul.horizontal.menu(data-magellan='')
+        li
+          a(href='#first') First Arrival
+        li
+          a(href='#second') Second Arrival
+        li
+          a(href='#third') Third Arrival
+      |     hr
+      |     h2 Media Object
+      .media-object
+        .media-object-section
+          img(src='http://placeimg.com/200/200/people')
+        .media-object-section
+          h4 Dreams feel real while we&apos;re in them.
+          p
+            | I&apos;m going to improvise. Listen, there&apos;s something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.
+
+
+      hr
+
+      h2 Menu
+
+      
+      ul.menu
+        li
+          a(href='#') One
+        li
+          a(href='#') Two
+        li
+          a(href='#') Three
+        li
+          a(href='#') Four
+      ul.menu.icon-top
+        li
+          a(href='#')
+            i.fi-list
+            span One
+        li
+          a(href='#')
+            i.fi-list
+            span Two
+        li
+          a(href='#')
+            i.fi-list
+            span Three
+        li
+          a(href='#')
+            i.fi-list
+            span Four
+
+
+      hr
+
+      h2 Off-canvas
+
+      
+      html
+        body
+          .off-canvas-wrapper
+            .off-canvas-wrapper-inner(data-off-canvas-wrapper='')
+              #offCanvasLeft.off-canvas.position-left(data-off-canvas='')
+                // left off-canvas markup
+              #offCanvasRight.off-canvas.position-right(data-off-canvas='', data-position='right')
+                // right off-canvas markup
+              .off-canvas-content(data-off-canvas-content='')
+                // page content
+
+      
+
+      
+      button.button(type='button', data-toggle='offCanvasLeft') Open Menu
+      
+
+      hr
+
+      h2 Orbit
+
+      
+      .orbit(role='region', aria-label='Favorite Space Pictures', data-orbit='')
+        ul.orbit-container
+          button.orbit-previous(aria-label='previous')
+            span.show-for-sr Previous Slide
+            | &#x25C0;
+          button.orbit-next(aria-label='next')
+            span.show-for-sr Next Slide
+            | &#x25B6;
+          li.is-active.orbit-slide
+            div
+              h3.text-center You can also throw some text in here!
+              p.text-center
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.
+              h3.text-center This Orbit slide has chill
+          li.orbit-slide
+            div
+              h3.text-center You can also throw some text in here!
+              p.text-center
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.
+              h3.text-center This Orbit slide has chill
+          li.orbit-slide
+            div
+              h3.text-center You can also throw some text in here!
+              p.text-center
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.
+              h3.text-center This Orbit slide has chill
+          li.orbit-slide
+            div
+              h3.text-center You can also throw some text in here!
+              p.text-center
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.
+              h3.text-center This Orbit slide has chill
+        nav.orbit-bullets
+          button.is-active(data-slide='0')
+            span.show-for-sr First slide details.
+            span.show-for-sr Current Slide
+          button(data-slide='1')
+            span.show-for-sr Second slide details.
+          button(data-slide='2')
+            span.show-for-sr Third slide details.
+          button(data-slide='3')
+            span.show-for-sr Fourth slide details.
+
+      
+
+      hr
+
+      h2 Pagination
+
+      
+      ul.pagination(role='navigation', aria-label='Pagination')
+        li.disabled
+          | Previous 
+          span.show-for-sr page
+        li.current
+          span.show-for-sr You&apos;re on page
+          |  1
+        li
+          a(href='#', aria-label='Page 2') 2
+        li
+          a(href='#', aria-label='Page 3') 3
+        li
+          a(href='#', aria-label='Page 4') 4
+        li.ellipsis(aria-hidden='true')
+        li
+          a(href='#', aria-label='Page 12') 12
+        li
+          a(href='#', aria-label='Page 13') 13
+        li
+          a(href='#', aria-label='Next page')
+            | Next 
+            span.show-for-sr page
+
+      
+
+      hr
+
+      h2 Progress Bar
+
+      
+      .success.progress(role='progressbar', tabindex='0', aria-valuenow='25', aria-valuemin='0', aria-valuetext='25 percent', aria-valuemax='100')
+        .progress-meter(style='width: 25%')
+          p.progress-meter-text 25%
+      .warning.progress
+        .progress-meter(style='width: 50%')
+          p.progress-meter-text 50%
+      .alert.progress
+        .progress-meter(style='width: 75%')
+          p.progress-meter-text 75%
+
+      
+
+      hr
+
+      h2 Responsive Menu
+
+      
+      ul.vertical.medium-horizontal.menu
+        li
+          a(href='#') Item 1
+        li
+          a(href='#') Item 2
+        li
+          a(href='#') Item 3
+
+      
+
+      hr
+
+      h2 Responsive Toggle
+
+      
+      .title-bar(data-responsive-toggle='example-menu', data-hide-for='medium')
+        button.menu-icon(type='button', data-toggle='')
+        .title-bar-title Menu
+      #example-menu.top-bar
+        .top-bar-left
+          ul.dropdown.menu(data-dropdown-menu='')
+            li.menu-text Site Title
+            li.has-submenu
+              a(href='#') One
+              ul.submenu.menu.vertical(data-submenu='')
+                li
+                  a(href='#') One
+                li
+                  a(href='#') Two
+                li
+                  a(href='#') Three
+            li
+              a(href='#') Two
+            li
+              a(href='#') Three
+        .top-bar-right
+          ul.menu
+            li
+              input(type='search', placeholder='Search')
+            li
+              button.button(type='button') Search
+
+      
+
+      hr
+
+      h2 Reveal
+
+      
+      p
+        a(data-open='exampleModal1') Click me for a modal
+      #exampleModal1.reveal(data-reveal='')
+        h1 Awesome. I Have It.
+        p.lead Your couch. It is mine.
+        p I&apos;m a cool paragraph that lives inside of an even cooler modal. Wins!
+        button.close-button(data-close='', aria-label='Close reveal', type='button')
+          span(aria-hidden='true') &times;
+
+      
+
+      hr
+
+      h2 Slider
+
+      
+      .slider(data-slider='', data-initial-start='50', data-end='200')
+        span.slider-handle(data-slider-handle='', role='slider', tabindex='1')
+        span.slider-fill(data-slider-fill='')
+        input(type='hidden')
+
+
+      .slider.vertical(data-slider='', data-initial-start='25', data-end='200', data-vertical='true')
+        span.slider-handle(data-slider-handle='', role='slider', tabindex='1')
+        span.slider-fill(data-slider-fill='')
+        input(type='hidden')
+      .slider(data-slider='', data-initial-start='25', data-initial-end='75')
+        span.slider-handle(data-slider-handle='', role='slider', tabindex='1')
+        span.slider-fill(data-slider-fill='')
+        span.slider-handle(data-slider-handle='', role='slider', tabindex='1')
+        input(type='hidden')
+        input(type='hidden')
+
+      
+
+      hr
+
+      h2 Sticky
+
+      
+      .row
+        .columns.small-12
+          #example1.columns.small-6(data-something='')
+            p#doodle
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          .columns.small-6.right(data-sticky-container='')
+            .sticky(data-sticky='', data-anchor='example1')
+              img.thumbnail(src='http://placehold.it/300x300')
+
+      
+
+      hr
+
+      h2 Switch
+
+      
+      .switch.tiny
+        input#tinySwitch.switch-input(type='checkbox', name='exampleSwitch')
+        label.switch-paddle(for='tinySwitch')
+          span.show-for-sr Tiny Sandwiches Enabled
+      .switch.small
+        input#smallSwitch.switch-input(type='checkbox', name='exampleSwitch')
+        label.switch-paddle(for='smallSwitch')
+          span.show-for-sr Small Portions Only
+      .switch.large
+        input#largeSwitch.switch-input(type='checkbox', name='exampleSwitch')
+        label.switch-paddle(for='largeSwitch')
+          span.show-for-sr Show Large Elephants
+
+      
+
+      hr
+
+      h2 Table
+
+      
+      table
+        thead
+          tr
+            th(width='200') Table Header
+            th Table Header
+            th(width='150') Table Header
+            th(width='150') Table Header
+        tbody
+          tr
+            td Content Goes Here
+            td This is longer content Donec id elit non mi porta gravida at eget metus.
+            td Content Goes Here
+            td Content Goes Here
+          tr
+            td Content Goes Here
+            td
+              | This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.
+            td Content Goes Here
+            td Content Goes Here
+          tr
+            td Content Goes Here
+            td
+              | This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.
+            td Content Goes Here
+            td Content Goes Here
+
+      
+
+      hr
+
+      h2 Tabs
+
+      
+      ul#example-tabs.tabs(data-tabs='')
+        li.tabs-title.is-active
+          a(href='#panel1', aria-selected='true') Tab 1
+        li.tabs-title
+          a(href='#panel2') Tab 2
+        li.tabs-title
+          a(href='#panel3') Tab 3
+        li.tabs-title
+          a(href='#panel4') Tab 4
+        li.tabs-title
+          a(href='#panel5') Tab 5
+        li.tabs-title
+          a(href='#panel6') Tab 6
+      .tabs-content(data-tabs-content='example-tabs')
+        #panel1.tabs-panel.is-active
+          p one
+          p Check me out! I&apos;m a super cool Tab panel with text content!
+        #panel2.tabs-panel
+          p two
+          img.thumbnail(src='http://placehold.it/300x300')
+        #panel3.tabs-panel
+          p three
+          p Check me out! I&apos;m a super cool Tab panel with text content!
+        #panel4.tabs-panel
+          p four
+          img.thumbnail(src='http://placehold.it/300x300')
+        #panel5.tabs-panel
+          p five
+          p Check me out! I&apos;m a super cool Tab panel with text content!
+        #panel6.tabs-panel
+          p six
+          img.thumbnail(src='http://placehold.it/300x300')
+
+      
+
+      hr
+
+      h2 Thumbnail
+
+      
+      .row
+        .small-4.columns
+          img.thumbnail(src='http://placehold.it/300x300', alt='Photo of Uranus.')
+        .small-4.columns
+          img.thumbnail(src='http://placehold.it/300x300', alt='Photo of Neptune.')
+        .small-4.columns
+          img.thumbnail(src='http://placehold.it/300x300', alt='Photo of Pluto.')
+
+      
+
+      hr
+
+      h2 Title Bar
+
+      
+      .title-bar
+        .title-bar-left
+          //- Js function For Offcanvass:  (type='button', data-toggle='offCanvas')
+          button.menu-icon(type='button')
+          span.title-bar-title Foundation
+        .title-bar-right
+          button.menu-icon(type='button')
+
+      
+
+      hr
+
+      h2 Toggler
+
+      
+      p
+        a(data-toggle='menuBar') Expand!
+      ul#menuBar.menu(data-toggler='.expanded')
+        li
+          a(href='#') One
+        li
+          a(href='#') Two
+        li
+          a(href='#') Three
+        li
+          a(href='#') Four
+
+      
+
+      hr
+
+      h2 Tooltip
+
+      
+      p
+        | The 
+        span.has-tip(data-tooltip='', aria-haspopup='true', data-disable-hover='false', tabindex='1', title='Fancy word for a beetle.') scarabaeus
+        |  hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
+
+      
+
+      hr
+
+      h2 Top Bar
+
+      
+      .top-bar
+        .top-bar-left
+          ul.dropdown.menu(data-dropdown-menu='')
+            li.menu-text Site Title
+            li.has-submenu
+              a(href='#') One
+              ul.submenu.menu.vertical(data-submenu='')
+                li
+                  a(href='#') One
+                li
+                  a(href='#') Two
+                li
+                  a(href='#') Three
+            li
+              a(href='#') Two
+            li
+              a(href='#') Three
+        .top-bar-right
+          ul.menu
+            li
+              input(type='search', placeholder='Search')
+            li
+              button.button(type='button') Search
+
+      
+
+      hr
+
+      h2 Visibility Classes
+      h3.show-for-medium Shown for Medium Up
+      h3.show-for-large Shown for Large Up
+      h3.show-for-small-only Shown for Small Only
+      h3.show-for-medium-only Shown for Medium Only
+      h3.show-for-large-only Shown for Large Only
+      h3.hide-for-medium Shown for Medium
+      h3.hide-for-large Shown for Large
+      h3.hide-for-small-only Hidden for Small Only
+      h3.hide-for-medium-only Hidden for medium Only
+      h3.hide-for-large-only Hidden for large Only
+      h3.hide Not there.
+      h3.invisible There, but Can't see me.
+      h3.show-for-landscape Show for Landscape
+      h3.show-for-portrait  show-for-portrait
+      h3.show-for-sr  Only For screen Reader
+      h3(area-hidden='true') This is hidden from Screen Readers
+      //- h3.show-on-focus(href='#mainContent') Make a link that appears when focused on with screen reader or keyboard, providing a link to jump over unecessary content for those with assisted browsing.
